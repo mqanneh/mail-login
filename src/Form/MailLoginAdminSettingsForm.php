@@ -62,6 +62,7 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
           ':input[name="mail_login_override_login_labels"]' => array('checked' => TRUE),
         ),
       ),
+      '#description' => $this->t('Override the username field title.'),
     );
 
     $form['general']['mail_login_username_description'] = array(
@@ -76,6 +77,7 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
           ':input[name="mail_login_override_login_labels"]' => array('checked' => TRUE),
         ),
       ),
+      '#description' => $this->t('Override the username field description.'),
     );
 
     return parent::buildForm($form, $form_state);
