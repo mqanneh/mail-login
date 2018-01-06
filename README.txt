@@ -12,7 +12,8 @@ CONTENTS OF THIS FILE
 INTRODUCTION
 ------------
 
-This module enables users to login by email address with the minimal configurations.
+This module enables users to login by email address with the
+minimal configurations.
 
  * For a full description of the module visit:
   https://www.drupal.org/project/mail_login
@@ -44,9 +45,11 @@ composer require 'drupal/mail_login:^1.0';
 CONFIGURATION
 --------------
 
-Go to "/admin/config/people/accounts/mail-login" for the configuration screen, available configuraitons:
+Go to "/admin/config/people/accounts/mail-login" for the configuration screen,
+   available configuraitons:
  * Enable login by email address: This option enables login by email address.
- * Override login form: This option allows you to override the login form username title/description.
+ * Override login form: This option allows you to override the login form
+   username title/description.
  * Login form username title: Override the username field title.
  * Login form username description: Override the username field description.
 

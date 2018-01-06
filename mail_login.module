@@ -21,7 +21,8 @@ function mail_login_form_alter(array &$form, FormStateInterface $form_state, $fo
         // Add our custom validation for login form.
         array_unshift($form['#validate'], 'mail_login_extra_validate');
       }
-      // Check for settings to override login form username title and description.
+      // Check for settings to override login form username
+      // title and description.
       if ($config->get('mail_login_override_login_labels')) {
         $form['name']['#title'] = t($config->get('mail_login_username_title'));
         $form['name']['#description'] = t($config->get('mail_login_username_description'));

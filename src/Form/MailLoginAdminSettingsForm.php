@@ -30,64 +30,57 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $config = \Drupal::service('config.factory')->getEditable('mail_login.settings');
 
-    $form['general'] = array(
+    $form['general'] = [
       '#type' => 'fieldset',
       '#title' => $this->t('General Configurations'),
       '#open' => TRUE,
-    );
+    ];
 
-    $form['general']['mail_login_enabled'] = array(
+    $form['general']['mail_login_enabled'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Enable login by email address'),
       '#default_value' => $config->get('mail_login_enabled'),
       '#description' => $this->t('This option enables login by email address.'),
-    );
+    ];
 
-    $form['general']['mail_login_override_login_labels'] = array(
+    $form['general']['mail_login_override_login_labels'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Override login form'),
       '#default_value' => $config->get('mail_login_override_login_labels'),
       '#description' => $this->t('This option allows you to override the login form username title/description.'),
-    );
+    ];
 
-    $form['general']['mail_login_username_title'] = array(
+    $form['general']['mail_login_username_title'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Login form username title'),
       '#default_value' => $config->get('mail_login_username_title'),
-      '#states' => array(
-        'required' => array(
-          ':input[name="mail_login_override_login_labels"]' => array('checked' => TRUE),
-        ),
-        'visible' => array(
-          ':input[name="mail_login_override_login_labels"]' => array('checked' => TRUE),
-        ),
-      ),
+      '#states' => [
+        'required' => [
+          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE],
+        ],
+        'visible' => [
+          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE],
+        ],
+      ],
       '#description' => $this->t('Override the username field title.'),
-    );
+    ];
 
-    $form['general']['mail_login_username_description'] = array(
+    $form['general']['mail_login_username_description'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Login form username description'),
       '#default_value' => $config->get('mail_login_username_description'),
-      '#states' => array(
-        'required' => array(
-          ':input[name="mail_login_override_login_labels"]' => array('checked' => TRUE),
-        ),
-        'visible' => array(
-          ':input[name="mail_login_override_login_labels"]' => array('checked' => TRUE),
-        ),
-      ),
+      '#states' => [
+        'required' => [
+          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE],
+        ],
+        'visible' => [
+          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE],
+        ],
+      ],
       '#description' => $this->t('Override the username field description.'),
-    );
+    ];
 
     return parent::buildForm($form, $form_state);
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
-    parent::validateForm($form, $form_state);
   }
 
   /**
