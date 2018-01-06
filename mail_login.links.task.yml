@@ -1,0 +1,6 @@
+mail_login.admin:
+  route_name: mail_login.admin
+  title: 'Mail Login'
+  description: 'Configurations for Mail Login.'
+  base_route: entity.user.admin_form
+  weight: 0
