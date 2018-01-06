@@ -44,7 +44,7 @@ composer require 'drupal/mail_login:^1.0';
 CONFIGURATION
 --------------
 
-Go to "/admin/config/people/accounts/mail-login" for the configuration screen, available configuraions:
+Go to "/admin/config/people/accounts/mail-login" for the configuration screen, available configuraitons:
  * Enable login by email address: This option enables login by email address.
  * Override login form: This option allows you to override the login form username title/description.
  * Login form username title: Override the username field title.
