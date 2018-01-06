@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Mail Login: This module enables users to login by email address.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function mail_login_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  switch ($form_id) {
+    case 'user_login_form':
+      $config_factory = \Drupal::configFactory();
+      $config = $config_factory->get('mail_login.settings');
+      if ($config->get('mail_login_enabled')) {
+        array_unshift($form['#validate'], 'mail_login_extra_validate');
+      }
+      if ($config->get('mail_login_override_login_labels')) {
+        $form['name']['#title'] = t($config->get('mail_login_username_title'));
+        $form['name']['#description'] = t($config->get('mail_login_username_description'));
+      }
+      break;
+  }
+}
+
+/**
+ * Custom validate function to enable email address login.
+ */
+function mail_login_extra_validate($form, FormStateInterface &$form_state) {
+  $login_input = $form_state->getValue('name');
+  if (filter_var($login_input, FILTER_VALIDATE_EMAIL)) {
+    $user = user_load_by_mail($login_input);
+    if ($user) {
+      $form_state->setValue('name', $user->getAccountName());
+    }
+  }
+}
