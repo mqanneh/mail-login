@@ -41,10 +41,14 @@ class AuthDecorator implements UserAuthInterface {
    * {@inheritdoc}
    */
   public function authenticate($username, $password) {
-    // If we have an email lookup the username by email.
-    if (!empty($username) && filter_var($username, FILTER_VALIDATE_EMAIL)) {
-      $account_search = $this->entityTypeManager->getStorage('user')->loadByProperties(['mail' => $username]);
+    $config_factory = \Drupal::configFactory();
+    $config = $config_factory->get('mail_login.settings');
 
+    // If we have an email lookup the username by email.
+    if ($config->get('mail_login_enabled') &&
+      !empty($username) &&
+      filter_var($username, FILTER_VALIDATE_EMAIL)) {
+      $account_search = $this->entityTypeManager->getStorage('user')->loadByProperties(['mail' => $username]);
       if ($account = reset($account_search)) {
         $username = $account->getAccountName();
       }

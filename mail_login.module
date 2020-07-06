@@ -17,13 +17,10 @@ function mail_login_form_alter(array &$form, FormStateInterface $form_state, $fo
       $config_factory = \Drupal::configFactory();
       $config = $config_factory->get('mail_login.settings');
       // Check for settings to enable login by email address.
-      if ($config->get('mail_login_enabled')) {
-        // Add our custom validation for login form.
-        array_unshift($form['#validate'], 'mail_login_extra_validate');
-      }
-      // Check for settings to override login form username
-      // title and description.
-      if ($config->get('mail_login_override_login_labels')) {
+      if ($config->get('mail_login_enabled') &&
+        $config->get('mail_login_override_login_labels')) {
+        // Check for settings to override login form username
+        // title and description.
         $form['name']['#title'] = t($config->get('mail_login_username_title'));
         $form['name']['#description'] = t($config->get('mail_login_username_description'));
       }

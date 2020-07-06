@@ -47,6 +47,11 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
       '#type' => 'checkbox',
       '#title' => $this->t('Override login form'),
       '#default_value' => $config->get('mail_login_override_login_labels'),
+      '#states' => [
+        'visible' => [
+          ':input[name="mail_login_enabled"]' => ['checked' => TRUE],
+        ],
+      ],
       '#description' => $this->t('This option allows you to override the login form username title/description.'),
     ];
 
@@ -56,10 +61,10 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('mail_login_username_title'),
       '#states' => [
         'required' => [
-          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE],
+          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE, 'visible' => TRUE],
         ],
         'visible' => [
-          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE],
+          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE, 'visible' => TRUE],
         ],
       ],
       '#description' => $this->t('Override the username field title.'),
@@ -71,10 +76,10 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
       '#default_value' => $config->get('mail_login_username_description'),
       '#states' => [
         'required' => [
-          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE],
+          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE, 'visible' => TRUE],
         ],
         'visible' => [
-          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE],
+          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE, 'visible' => TRUE],
         ],
       ],
       '#description' => $this->t('Override the username field description.'),
