@@ -3,12 +3,14 @@
 namespace Drupal\mail_login;
 
 use Drupal\user\UserAuthInterface;
+use Drupal\Core\DependencyInjection\DependencySerializationTrait;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 
 /**
  * Validates user authentication credentials.
  */
 class AuthDecorator implements UserAuthInterface {
+  use DependencySerializationTrait;
 
   /**
    * The original user authentication service.
