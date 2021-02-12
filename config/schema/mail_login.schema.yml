@@ -9,8 +9,10 @@ mail_login.settings:
       type: integer
       label: 'Override login labels'
     mail_login_username_title:
-      type: string
-      label: 'Username title'
+      type: text
+      label: 'Login form username label'
+      translatable: true
     mail_login_username_description:
-      type: string
-      label: 'Username description'
+      type: text
+      label: 'Login form username description'
+      translatable: true

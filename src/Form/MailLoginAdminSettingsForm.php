@@ -57,7 +57,7 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
 
     $form['general']['mail_login_username_title'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Login form username title'),
+      '#title' => $this->t('Login form username label'),
       '#default_value' => $config->get('mail_login_username_title'),
       '#states' => [
         'required' => [
