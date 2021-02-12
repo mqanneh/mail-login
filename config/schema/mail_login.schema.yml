@@ -5,14 +5,25 @@ mail_login.settings:
     mail_login_enabled:
       type: integer
       label: 'Mail Login enabled'
+    mail_login_email_only:
+      type: integer
+      label: 'Login by email address only'
     mail_login_override_login_labels:
       type: integer
       label: 'Override login labels'
     mail_login_username_title:
       type: text
-      label: 'Login form username label'
+      label: 'Login form username/email address label'
       translatable: true
     mail_login_username_description:
       type: text
-      label: 'Login form username description'
+      label: 'Login form username/email address description'
+      translatable: true
+    mail_login_email_only_title:
+      type: text
+      label: 'Login form email address only label'
+      translatable: true
+    mail_login_email_only_description:
+      type: text
+      label: 'Login form email address only description'
       translatable: true
