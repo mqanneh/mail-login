@@ -15,7 +15,7 @@
   ],
   "support": {
     "issues": "http://drupal.org/project/issues/mail_login",
-    "source": "http://cgit.drupalcode.org/mail_login",
+    "source": "https://git.drupalcode.org/project/mail_login",
     "email": "mqanneh@gmail.com"
   }
 }

@@ -47,15 +47,22 @@ class AuthDecorator implements UserAuthInterface {
     $config = $config_factory->get('mail_login.settings');
 
     // If we have an email lookup the username by email.
-    if ($config->get('mail_login_enabled') &&
-      !empty($username) &&
-      filter_var($username, FILTER_VALIDATE_EMAIL)) {
-      $account_search = $this->entityTypeManager->getStorage('user')->loadByProperties(['mail' => $username]);
-      if ($account = reset($account_search)) {
-        $username = $account->getAccountName();
+    if ($config->get('mail_login_enabled') && !empty($username)) {
+      if (filter_var($username, FILTER_VALIDATE_EMAIL)) {
+        $account_search = $this->entityTypeManager->getStorage('user')->loadByProperties(['mail' => $username]);
+        if ($account = reset($account_search)) {
+          $username = $account->getAccountName();
+        }
+      }
+      // Check if login by email only option is enabled.
+      else if ($config->get('mail_login_email_only')) {
+        // Display a custom login error message.
+        \Drupal::messenger()->addError(
+          t('Login by username has been disabled, please use email address instead.')
+        );
+        return NULL;
       }
     }
-
     return $this->userAuth->authenticate($username, $password);
   }
 
