@@ -52,6 +52,10 @@ class AuthDecorator implements UserAuthInterface {
         $account_search = $this->entityTypeManager->getStorage('user')->loadByProperties(['mail' => $username]);
         if ($account = reset($account_search)) {
           $username = $account->getAccountName();
+          if(user_is_blocked($username)) {
+            \Drupal::messenger()->addError(t('The user has not been activated yet or is blocked.'));
+            return NULL;
+          }
         }
       }
       // Check if login by email only option is enabled.
