@@ -62,7 +62,7 @@ class AuthDecorator implements UserAuthInterface {
       else if ($config->get('mail_login_email_only')) {
         // Display a custom login error message.
         \Drupal::messenger()->addError(
-          t('Login by username has been disabled, please use email address instead.')
+          t('Login by username has been disabled. Use your email address instead.')
         );
         return NULL;
       }
