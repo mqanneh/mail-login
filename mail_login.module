@@ -28,6 +28,8 @@ function mail_login_form_alter(array &$form, FormStateInterface $form_state, $fo
         if ($config->get('mail_login_email_only')) {
           $username_label = $config->get('mail_login_email_only_title');
           $description = $config->get('mail_login_email_only_description');
+          $password_description = $config->get('mail_login_password_only_description');
+          $form['pass']['#description'] = $password_description;
         }
 
         $form['name']['#title'] = $username_label;
