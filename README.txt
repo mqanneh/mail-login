@@ -39,7 +39,7 @@ INSTALLATION WITH COMPOSER
 --------------------------
 
 We recommend using Composer to download Mail Login module.
-composer require 'drupal/mail_login:^1.0';
+composer require 'drupal/mail_login:^2.0';
 
 
 CONFIGURATION
