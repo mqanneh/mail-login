@@ -54,7 +54,7 @@ class AuthDecorator implements UserAuthInterface {
           $username = $account->getAccountName();
           if(user_is_blocked($username)) {
             \Drupal::messenger()->addError(t('The user has not been activated yet or is blocked.'));
-            return NULL;
+            return FALSE;
           }
         }
       }
@@ -64,7 +64,7 @@ class AuthDecorator implements UserAuthInterface {
         \Drupal::messenger()->addError(
           t('Login by username has been disabled. Use your email address instead.')
         );
-        return NULL;
+        return FALSE;
       }
     }
     return $this->userAuth->authenticate($username, $password);
