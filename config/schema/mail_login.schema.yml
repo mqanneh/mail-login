@@ -27,3 +27,7 @@ mail_login.settings:
       type: text
       label: 'Login form email address only description'
       translatable: true
+    mail_login_password_only_description:
+      type: text
+      label: 'Login form password only description'
+      translatable: true
