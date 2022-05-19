@@ -70,13 +70,19 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
     $form['general']['mail_login_username_title'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Login form username/email address label'),
-      '#default_value' => $config->get('mail_login_username_title') ? $config->get('mail_login_username_title') : $this->t('Login by username/email address'),
+      '#default_value' => $config->get('mail_login_username_title') ?: $this->t('Login by username/email address'),
       '#states' => [
         'required' => [
-          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE, 'visible' => TRUE],
+          ':input[name="mail_login_override_login_labels"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
         ],
         'visible' => [
-          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE, 'visible' => TRUE],
+          ':input[name="mail_login_override_login_labels"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
           ':input[name="mail_login_email_only"]' => ['checked' => FALSE],
         ],
       ],
@@ -86,13 +92,19 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
     $form['general']['mail_login_username_description'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Login form username/email address description'),
-      '#default_value' => $config->get('mail_login_username_description') ? $config->get('mail_login_username_description') : $this->t('You can use your username or email address to login.'),
+      '#default_value' => $config->get('mail_login_username_description') ?: $this->t('You can use your username or email address to login.'),
       '#states' => [
         'required' => [
-          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE, 'visible' => TRUE],
+          ':input[name="mail_login_override_login_labels"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
         ],
         'visible' => [
-          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE, 'visible' => TRUE],
+          ':input[name="mail_login_override_login_labels"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
           ':input[name="mail_login_email_only"]' => ['checked' => FALSE],
         ],
       ],
@@ -102,13 +114,19 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
     $form['general']['mail_login_email_only_title'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Login form email address only label'),
-      '#default_value' => $config->get('mail_login_email_only_title') ? $config->get('mail_login_email_only_title') : $this->t('Login by email address'),
+      '#default_value' => $config->get('mail_login_email_only_title') ?: $this->t('Login by email address'),
       '#states' => [
         'required' => [
-          ':input[name="mail_login_email_only"]' => ['checked' => TRUE, 'visible' => TRUE],
+          ':input[name="mail_login_email_only"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
         ],
         'visible' => [
-          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE, 'visible' => TRUE],
+          ':input[name="mail_login_override_login_labels"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
           ':input[name="mail_login_email_only"]' => ['checked' => TRUE],
         ],
       ],
@@ -118,13 +136,19 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
     $form['general']['mail_login_email_only_description'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Login form email address only description'),
-      '#default_value' => $config->get('mail_login_email_only_description') ? $config->get('mail_login_email_only_description') : $this->t('You can use your email address only to login.'),
+      '#default_value' => $config->get('mail_login_email_only_description') ?: $this->t('You can use your email address only to login.'),
       '#states' => [
         'required' => [
-          ':input[name="mail_login_email_only"]' => ['checked' => TRUE, 'visible' => TRUE],
+          ':input[name="mail_login_email_only"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
         ],
         'visible' => [
-          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE, 'visible' => TRUE],
+          ':input[name="mail_login_override_login_labels"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
           ':input[name="mail_login_email_only"]' => ['checked' => TRUE],
         ],
       ],
@@ -134,19 +158,112 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
     $form['general']['mail_login_password_only_description'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Login form password only description'),
-      '#default_value' => $config->get('mail_login_password_only_description') ? $config->get('mail_login_password_only_description') : $this->t('Enter the password that accompanies your email address.'),
+      '#default_value' => $config->get('mail_login_password_only_description') ?: $this->t('Enter the password that accompanies your email address.'),
       '#states' => [
         'required' => [
-          ':input[name="mail_login_email_only"]' => ['checked' => TRUE, 'visible' => TRUE],
+          ':input[name="mail_login_email_only"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
         ],
         'visible' => [
-          ':input[name="mail_login_override_login_labels"]' => ['checked' => TRUE, 'visible' => TRUE],
+          ':input[name="mail_login_override_login_labels"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
           ':input[name="mail_login_email_only"]' => ['checked' => TRUE],
         ],
       ],
       '#description' => $this->t('Override the password field description.'),
     ];
 
+    $form['general']['mail_login_password_reset_username_title'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Password reset form username/email address label'),
+      '#default_value' => $config->get('mail_login_password_reset_username_title') ?: $this->t('Username or email address'),
+      '#states' => [
+        'required' => [
+          ':input[name="mail_login_override_login_labels"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
+        ],
+        'visible' => [
+          ':input[name="mail_login_override_login_labels"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
+          ':input[name="mail_login_email_only"]' => ['checked' => FALSE],
+        ],
+      ],
+      '#description' => $this->t('Override the username field title.'),
+    ];
+
+    $form['general']['mail_login_password_reset_username_description'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Password reset form username/email address description'),
+      '#default_value' => $config->get('mail_login_password_reset_username_description') ?: $this->t('Password reset instructions will be sent to your registered email address.'),
+      '#states' => [
+        'required' => [
+          ':input[name="mail_login_override_login_labels"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
+        ],
+        'visible' => [
+          ':input[name="mail_login_override_login_labels"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
+          ':input[name="mail_login_email_only"]' => ['checked' => FALSE],
+        ],
+      ],
+      '#description' => $this->t('Override the username field description.'),
+    ];
+
+    $form['general']['mail_login_password_reset_email_only_title'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Password reset form email address only label'),
+      '#default_value' => $config->get('mail_login_password_reset_email_only_title') ?: $this->t('Email address'),
+      '#states' => [
+        'required' => [
+          ':input[name="mail_login_email_only"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
+        ],
+        'visible' => [
+          ':input[name="mail_login_override_login_labels"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
+          ':input[name="mail_login_email_only"]' => ['checked' => TRUE],
+        ],
+      ],
+      '#description' => $this->t('Override the username field title.'),
+    ];
+
+    $form['general']['mail_login_password_reset_email_only_description'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Password reset form email address only description'),
+      '#default_value' => $config->get('mail_login_password_reset_email_only_description') ?: $this->t('Password reset instructions will be sent to your registered email address.'),
+      '#states' => [
+        'required' => [
+          ':input[name="mail_login_email_only"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
+        ],
+        'visible' => [
+          ':input[name="mail_login_override_login_labels"]' => [
+            'checked' => TRUE,
+            'visible' => TRUE,
+          ],
+          ':input[name="mail_login_email_only"]' => ['checked' => TRUE],
+        ],
+      ],
+      '#description' => $this->t('Override the username field description.'),
+    ];
     return parent::buildForm($form, $form_state);
   }
 
@@ -164,6 +281,10 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
       ->set('mail_login_email_only_title', $form_state->getValue('mail_login_email_only_title'))
       ->set('mail_login_email_only_description', $form_state->getValue('mail_login_email_only_description'))
       ->set('mail_login_password_only_description', $form_state->getValue('mail_login_password_only_description'))
+      ->set('mail_login_password_reset_username_title', $form_state->getValue('mail_login_password_reset_username_title'))
+      ->set('mail_login_password_reset_username_description', $form_state->getValue('mail_login_password_reset_username_description'))
+      ->set('mail_login_password_reset_email_only_title', $form_state->getValue('mail_login_password_reset_email_only_title'))
+      ->set('mail_login_password_reset_email_only_description', $form_state->getValue('mail_login_password_reset_email_only_description'))
       ->save();
 
     parent::submitForm($form, $form_state);
