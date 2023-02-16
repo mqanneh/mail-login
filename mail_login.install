@@ -24,3 +24,12 @@ function mail_login_update_9001() {
   $config->set('mail_login_password_reset_email_only_description', 'Password reset instructions will be sent to your registered email address.');
   $config->save(TRUE);
 }
+
+/**
+ * Add new configuration options for the password reset form.
+ */
+function mail_login_update_9002() {
+  $config = \Drupal::configFactory()->getEditable('mail_login.settings');
+  $config->set('mail_login_case_sensitive', 1);
+  $config->save(TRUE);
+}

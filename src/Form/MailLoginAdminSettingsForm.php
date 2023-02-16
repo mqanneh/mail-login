@@ -43,6 +43,13 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
       '#description' => $this->t('This option enables login by email address.'),
     ];
 
+    $form['general']['mail_login_case_sensitive'] = [
+      '#type' => 'checkbox',
+      '#title' => $this->t('Email addresses are case-sensitive'),
+      '#default_value' => $config->get('mail_login_case_sensitive'),
+      '#description' => $this->t('Disable this option to ignore upper/lower-case differences in email addresses during login, provided there is only one possible match.  If more than one email address would match then case-sensitivity is respected in order to guarantee uniqueness.  This is because RFC&nbsp;5321 permits case-sensitivity and therefore, while email addresses are <em>commonly</em> case-insensitive in practice, conflicts are possible in principle.'),
+    ];
+
     $form['general']['mail_login_email_only'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Login by email address only'),
@@ -264,6 +271,7 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
       ],
       '#description' => $this->t('Override the username field description.'),
     ];
+
     return parent::buildForm($form, $form_state);
   }
 
@@ -274,6 +282,7 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
     $config = $this->config('mail_login.settings');
     $config
       ->set('mail_login_enabled', $form_state->getValue('mail_login_enabled'))
+      ->set('mail_login_case_sensitive', $form_state->getValue('mail_login_case_sensitive'))
       ->set('mail_login_email_only', $form_state->getValue('mail_login_email_only'))
       ->set('mail_login_override_login_labels', $form_state->getValue('mail_login_override_login_labels'))
       ->set('mail_login_username_title', $form_state->getValue('mail_login_username_title'))

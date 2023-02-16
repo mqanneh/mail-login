@@ -1,4 +1,5 @@
 mail_login_enabled: 1
+mail_login_case_sensitive: 1
 mail_login_email_only: 0
 mail_login_override_login_labels: 1
 mail_login_username_title: 'Login by username/email address'

@@ -5,6 +5,9 @@ mail_login.settings:
     mail_login_enabled:
       type: integer
       label: 'Mail Login enabled'
+    mail_login_case_sensitive:
+      type: integer
+      label: 'Email addresses are case-sensitive'
     mail_login_email_only:
       type: integer
       label: 'Login by email address only'
