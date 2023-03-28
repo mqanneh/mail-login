@@ -68,6 +68,7 @@ class AuthDecorator implements UserAuthInterface {
           // permitted by RFC 5321).
           $db = $this->connection;
           $user_ids = \Drupal::entityQuery('user')
+            ->accessCheck(FALSE)
             ->condition('mail', $db->escapeLike($username), 'LIKE')
             ->execute();
           if (count($user_ids) === 1) {
