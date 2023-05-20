@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
  * Implements hook_form_alter().
@@ -60,5 +61,29 @@ function mail_login_form_alter(array &$form, FormStateInterface $form_state, $fo
       $form['name']['#title'] = $username_label;
       $form['mail']['#markup'] = $description;
       break;
+  }
+}
+
+/**
+ * Implements hook_help().
+ */
+function mail_login_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.mail_login':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module enables users to login by email address with the minimal configurations. For configuring mail login go to "/admin/config/people/mail-login".') . '</p>';
+      $output .= '<h3>' . t('Available configurations:') . '</h3>';
+      $output .= '<ul>';
+      $output .= '<li>' . t('<b>Enable login by email address:</b> This option enables login by email address.') . '</li>';
+      $output .= '<li>' . t('<b>Override login form:</b> This option allows you to override the login form username title/description.') . '</li>';
+      $output .= '<li>' . t('<b>Login by email address only:</b> This option disables login by username and forces login by email address only.') . '</li>';
+      $output .= '<li>' . t('<b>Override login form:</b> This option allows you to override the login form username title/description.') . '</li>';
+      $output .= '<li>' . t('<b>Login form username/email address label:</b> Override the username field title.') . '</li>';
+      $output .= '<li>' . t('<b>Login form username/email address description:</b> Override the username field description.') . '</li>';
+      $output .= '<li>' . t('<b>Login form email address only label:</b> Override the username field title.') . '</li>';
+      $output .= '<li>' . t('<b>Login form email address only description:</b> Override the username field description.') . '</li>';
+      $output .= '</ul>';
+      return $output;
   }
 }
