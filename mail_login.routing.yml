@@ -5,13 +5,3 @@ mail_login.admin:
     _title: 'Mail Login'
   requirements:
     _permission: 'administer mail login'
-
-user.login:
-  path: '/user/login'
-  defaults:
-    _form: '\Drupal\mail_login\Form\MailLoginUserLoginForm'
-    _title: 'Log in'
-  requirements:
-    _user_is_logged_in: 'FALSE'
-  options:
-    _maintenance_access: TRUE
