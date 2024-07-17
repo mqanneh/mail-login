@@ -10,8 +10,7 @@
 
 ## Introduction
 
-This module enables users to login by email address with the
-minimal configurations.
+This module enables users to login by email address with minimal configuration.
 
  * For a full description of the module visit: [https://www.drupal.org/project/mail_login](https://www.drupal.org/project/mail_login)
 
@@ -25,20 +24,17 @@ This module requires no modules outside of Drupal core.
 
 ## Installation
 
-Install the optimizely module as you would normally install a contributed Drupal
-module. Visit [https://www.drupal.org/node/1897420](https://www.drupal.org/node/1897420) for further information.
-
-
-## Installation with composer
-
-We recommend using Composer to download Mail Login module.
-```composer require 'drupal/mail_login:^2.0';```
+Install as you would normally install a contributed Drupal module. For further
+information, see
+[Installing Drupal Modules](https://www.drupal.org/docs/extending-drupal/installing-drupal-modules).
 
 
 ## Configuration
 
-Go to "/admin/config/people/accounts/mail-login" for the configuration screen,
-   available configuraitons:
+Go to "/admin/config/people/accounts/mail-login" for the configuration screen.
+
+Available settings:
+
  * Enable login by email address: This option enables login by email address.
  * Override login form: This option allows you to override the login form
    username title/description.
@@ -48,8 +44,9 @@ Go to "/admin/config/people/accounts/mail-login" for the configuration screen,
  * Password reset form username description: Override the
  username field description.
 
+
 ## Maintainers
 
-This module was created by mqanneh, a drupal developer.
+This module was created by mqanneh, a Drupal developer.
 
  * Mohammad AlQanneh - [https://www.drupal.org/u/mqanneh](https://www.drupal.org/u/mqanneh)

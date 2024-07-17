@@ -71,7 +71,8 @@ class AuthDecorator implements UserAuthInterface {
     EntityTypeManagerInterface $entity_type_manager,
     Connection $connection,
     ConfigFactoryInterface $config_factory,
-    MessengerInterface $messenger) {
+    MessengerInterface $messenger,
+  ) {
 
     $this->userAuth = $user_auth;
     $this->entityTypeManager = $entity_type_manager;

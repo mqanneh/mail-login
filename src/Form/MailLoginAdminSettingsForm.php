@@ -37,6 +37,7 @@ class MailLoginAdminSettingsForm extends ConfigFormBase {
    * MailLoginAdminSettingsForm constructor.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+   *   The config factory.
    */
   public function __construct(ConfigFactoryInterface $config_factory) {
     $this->configFactory = $config_factory;
